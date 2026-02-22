@@ -1,5 +1,5 @@
 package app
 
 type HealthDto struct {
-	Type string `query:"type"`
+	Type string `flag:"type"`
 }

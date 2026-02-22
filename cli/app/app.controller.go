@@ -16,7 +16,7 @@ func (sc *AppController) Health(body *HealthDto) types.Output {
 	sc.log.Info("AppController: Health check called", body)
 	status := sc.appService.Health()
 	if body.Type != "" {
-		return output.ConsoleSuccess(fmt.Sprintf("%s (query: %s)", status, body.Type))
+		return output.ConsoleSuccess(fmt.Sprintf("%s (flag: %s)", status, body.Type))
 	}
 	return output.ConsoleSuccess(status)
 }
