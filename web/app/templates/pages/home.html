@@ -1,0 +1,22 @@
+<div class="card">
+    <h1>Welcome to Goose Web Platform</h1>
+    <p>A powerful, modular web framework built with Go.</p>
+</div>
+
+<div class="card">
+    <h2>System Status</h2>
+    <p>
+        <span class="status-badge status-healthy">{{.Status}}</span>
+    </p>
+    {{if .Query}}
+    <p><strong>Query:</strong> {{.Query}}</p>
+    {{end}}
+</div>
+
+<div class="card">
+    <h2>Quick Links</h2>
+    <p>
+        <a href="/user" class="btn">View Users</a>
+        <a href="/user/1" class="btn btn-secondary" style="margin-left: 10px;">API Example</a>
+    </p>
+</div>
