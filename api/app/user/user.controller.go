@@ -1,21 +1,17 @@
 package user
 
 import (
-	"github.com/awesome-goose/goose/output"
-	"github.com/awesome-goose/goose/types"
+	"github.com/awesome-goose/goose/io/resources/api"
 )
 
 type UserController struct {
-	userService *UserService `inject:""`
-	log         types.Log    `inject:""`
+	api.Resource[User]
+
+	userEntity *UserEntity `inject:""`
 }
 
-func (sc *UserController) Get(body *GetDto) types.Output {
-	sc.log.Info("UserController: Get check called")
-	return output.JSON(sc.userService.Get())
-}
-
-func (sc *UserController) List(body *ListDto) types.Output {
-	sc.log.Info("UserController: List check called")
-	return output.JSON(sc.userService.List())
+func (uc *UserController) OnRegister() {
+	uc.Hydrate(
+		uc.userEntity,
+	)
 }

@@ -3,7 +3,7 @@ package cli
 import (
 	"fmt"
 
-	"github.com/awesome-goose/goose/output"
+	"github.com/awesome-goose/goose/io/output"
 	"github.com/awesome-goose/goose/types"
 	"github.com/awesome-goose/multi/app/shared"
 )

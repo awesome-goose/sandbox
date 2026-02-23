@@ -1,12 +1,17 @@
 package user
 
-import "github.com/awesome-goose/goose/types"
+import (
+	"github.com/awesome-goose/goose/modules/sql"
+	"github.com/awesome-goose/goose/types"
+)
 
 type UserModule struct{}
 
 func (m *UserModule) Imports() []types.Module {
 	return []types.Module{
 		ROUTES,
+
+		sql.Child(&sql.Config{}),
 	}
 }
 
