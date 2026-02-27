@@ -10,7 +10,6 @@ type UserModule struct{}
 func (m *UserModule) Imports() []types.Module {
 	return []types.Module{
 		ROUTES,
-
 		sql.Child(&sql.Config{}),
 	}
 }

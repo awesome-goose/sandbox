@@ -5,13 +5,13 @@ import (
 )
 
 type UserController struct {
-	api.Resource[User]
+	*api.Resource[User] `inject:""`
 
-	userEntity *UserEntity `inject:""`
+	entity *UserEntity `inject:""`
 }
 
 func (uc *UserController) OnRegister() {
 	uc.Hydrate(
-		uc.userEntity,
+		uc.entity,
 	)
 }
