@@ -1,29 +1,42 @@
-# Multi-Platform App Sandbox
+<p align="center">
+  <strong>🪿 Goose Framework</strong><br>
+  <sub>Modular • Scalable • Multi-Platform</sub>
+</p>
 
-This is an example of a multi-platform application using the goose framework.
+---
 
-## Overview
+# Multi-Platform Sandbox
 
-This app demonstrates how to run multiple platforms (API, Web, CLI) in a single application:
+A multi-platform application example demonstrating how to run API, Web, and CLI from a single codebase using the Goose framework.
 
-- **API Server**: Runs on port 8080, provides JSON API endpoints
-- **Web Server**: Runs on port 3000, serves HTML pages
-- **CLI**: Command-line interface for administrative tasks
+---
 
-## Running the Application
+## Features
 
-### Start API and Web servers concurrently
+- **API Server** - REST API on port 8080
+- **Web Server** - HTML pages on port 3000
+- **CLI** - Command-line interface
+- **Shared Module** - Common services across platforms
+- **Concurrent Execution** - API and Web run simultaneously
+- **Graceful Shutdown** - Handles SIGINT/SIGTERM
+
+---
+
+## Running
+
+### Start API and Web Servers
 
 ```bash
+go mod tidy
 go run main.go
 ```
 
-This starts:
+Starts:
 
 - API server at http://localhost:8080
 - Web server at http://localhost:3000
 
-### Run CLI commands
+### Run CLI Commands
 
 ```bash
 go run main.go cli info
@@ -31,52 +44,100 @@ go run main.go cli help
 go run main.go cli version
 ```
 
-## API Endpoints
+---
 
-- `GET /api/status` - Get API status
-- `GET /api/health` - Health check
+## Endpoints
 
-## Web Routes
+### API Routes (port 8080)
 
-- `GET /` - Home page
-- `GET /status` - Web status page
+| Method | Path          | Description  |
+| ------ | ------------- | ------------ |
+| GET    | `/api/status` | API status   |
+| GET    | `/api/health` | Health check |
+
+### Web Routes (port 3000)
+
+| Method | Path      | Description |
+| ------ | --------- | ----------- |
+| GET    | `/`       | Home page   |
+| GET    | `/status` | Status page |
+
+### CLI Commands
+
+| Command       | Description   |
+| ------------- | ------------- |
+| `cli info`    | Show app info |
+| `cli help`    | Show help     |
+| `cli version` | Show version  |
+
+---
 
 ## Project Structure
 
 ```
 multi/
-├── main.go                 # Application entry point
-├── go.mod                  # Go module file
-├── .env                    # Environment configuration
+├── main.go              # Entry point, multi-platform setup
+├── .env                 # Environment variables
+├── go.mod               # Go module
 └── app/
-    ├── api/                    # API platform
-    │   ├── api.module.go       # API platform module
-    │   ├── api.controller.go   # API request handlers
-    │   ├── api.service.go      # API business logic
-    │   └── api.routes.go       # API route definitions
-    ├── web/                    # Web platform
-    │   ├── web.module.go       # Web platform module
-    │   ├── web.controller.go   # Web request handlers
-    │   ├── web.service.go      # Web business logic
-    │   └── web.routes.go       # Web route definitions
-    ├── cli/                    # CLI platform
-    │   ├── cli.module.go       # CLI platform module
-    │   ├── cli.controller.go   # CLI command handlers
-    │   ├── cli.service.go      # CLI business logic
-    │   └── cli.routes.go       # CLI command definitions
-    └── shared/                 # Shared across all platforms
-        ├── shared.module.go    # Shared module
-        └── shared.service.go   # Shared business logic
+    ├── api/             # API platform module
+    │   ├── api.module.go
+    │   ├── api.controller.go
+    │   ├── api.routes.go
+    │   └── api.service.go
+    ├── web/             # Web platform module
+    │   ├── web.module.go
+    │   ├── web.controller.go
+    │   ├── web.routes.go
+    │   └── web.service.go
+    ├── cli/             # CLI platform module
+    │   ├── cli.module.go
+    │   ├── cli.controller.go
+    │   ├── cli.routes.go
+    │   └── cli.service.go
+    └── shared/          # Shared across platforms
+        ├── shared.module.go
+        └── shared.service.go
 ```
+
+---
+
+## Configuration
+
+### Platform Setup
+
+```go
+// API Platform
+apiPlatform := api.NewPlatform(
+    api.WithName("multi-api"),
+    api.WithPort(8080),
+)
+
+// Web Platform
+webPlatform := web.NewPlatform(
+    web.WithName("multi-web"),
+    web.WithPort(3000),
+)
+
+// CLI Platform
+cliPlatform := cli.NewPlatform(
+    cli.WithName("multi-cli"),
+)
+
+// Start all platforms
+goose.Start(
+    goose.API(apiPlatform, apiModule, initializers),
+    goose.Web(webPlatform, webModule, initializers),
+    goose.CLI(cliPlatform, cliModule, initializers),
+)
+```
+
+---
 
 ## Key Concepts
 
-1. **Shared Code**: The `shared/` directory contains code that can be used by all platforms.
-
-2. **Platform-Specific Code**: Each platform has its own module, controller, service, and routes.
-
-3. **Concurrent Execution**: API and Web platforms run in separate goroutines.
-
-4. **CLI Invocation**: CLI is only executed when the `cli` argument is passed.
-
-5. **Graceful Shutdown**: All servers handle SIGINT/SIGTERM for graceful shutdown.
+1. **Shared Code** - The `shared/` directory contains services used by all platforms
+2. **Platform-Specific Code** - Each platform has its own module, controller, service, and routes
+3. **Concurrent Execution** - API and Web platforms run in separate goroutines
+4. **CLI Invocation** - CLI only executes when `cli` argument is passed
+5. **Graceful Shutdown** - All servers handle SIGINT/SIGTERM

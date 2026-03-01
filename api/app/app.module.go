@@ -7,23 +7,24 @@ import (
 )
 
 type AppModule struct {
-	env types.Env `inject:""`
+	config types.Config `inject:""`
+	env    types.Env    `inject:""`
 }
 
 func (m *AppModule) Imports() []types.Module {
 	return []types.Module{
 		sql.Root(&sql.Config{
-			Dialect:  m.env.Get("DB_DIALECT"),
+			Dialect:  m.config.Get("config.sql.dialect"),
 			Host:     m.env.Get("DB_HOST"),
 			Port:     m.env.GetInt("DB_PORT"),
 			User:     m.env.Get("DB_USER"),
 			Pass:     m.env.Get("DB_PASSWORD"),
 			Name:     m.env.Get("DB_NAME"),
-			Sync:     m.env.GetBool("DB_SYNC"),
-			Log:      m.env.GetBool("DB_LOG"),
-			SSLMode:  m.env.Get("DB_SSLMODE"),
-			Schema:   m.env.Get("DB_SCHEMA"),
-			TimeZone: m.env.Get("DB_TIMEZONE"),
+			Sync:     m.config.GetBool("config.sql.sync"),
+			Log:      m.config.GetBool("config.sql.log"),
+			SSLMode:  m.config.Get("config.sql.sslmode"),
+			Schema:   m.config.Get("config.sql.schema"),
+			TimeZone: m.config.Get("config.sql.timezone"),
 		}),
 
 		&user.UserModule{},

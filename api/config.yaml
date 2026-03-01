@@ -1,0 +1,7 @@
+sql:
+  dialect: "postgres"
+  sync: "{{DB_SYNC}}"
+  log: "{{DB_LOG}}"
+  sslmode: "{{DB_SSLMODE}}"
+  schema: "{{DB_SCHEMA}}"
+  timezone: "{{DB_TIMEZONE}}"
