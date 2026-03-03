@@ -25,5 +25,3 @@ require (
 	gorm.io/driver/sqlite v1.5.7 // indirect
 	gorm.io/gorm v1.25.12 // indirect
 )
-
-replace github.com/awesome-goose/goose => ../../goose
