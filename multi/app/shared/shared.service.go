@@ -7,7 +7,7 @@ type SharedService struct{}
 func (s *SharedService) GetAppInfo() map[string]any {
 	return map[string]any{
 		"name":    "multi-platform-app",
-		"version": "1.0.0",
+		"version": "0.0.0",
 		"author":  "awesome-goose",
 	}
 }

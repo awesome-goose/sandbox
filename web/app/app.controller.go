@@ -11,7 +11,6 @@ type AppController struct {
 }
 
 func (sc *AppController) Health(body *HealthDto) types.Output {
-	sc.log.Info("AppController: Health check called", body)
 	status := sc.appService.Health()
 
 	return output.View("pages/home.html", map[string]any{
