@@ -2,7 +2,7 @@ module github.com/awesome-goose/web
 
 go 1.25.3
 
-require github.com/awesome-goose/goose v0.0.0
+require github.com/awesome-goose/goose v0.0.6
 
 require (
 	github.com/go-sql-driver/mysql v1.7.0 // indirect

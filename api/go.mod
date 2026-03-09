@@ -2,7 +2,7 @@ module github.com/awesome-goose/api
 
 go 1.25.3
 
-require github.com/awesome-goose/goose v0.0.0
+require github.com/awesome-goose/goose v0.0.6
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

@@ -141,3 +141,25 @@ goose.Start(
 3. **Concurrent Execution** - API and Web platforms run in separate goroutines
 4. **CLI Invocation** - CLI only executes when `cli` argument is passed
 5. **Graceful Shutdown** - All servers handle SIGINT/SIGTERM
+
+---
+
+## Running Tests
+
+```bash
+# Run all tests
+go test ./tests/...
+
+# Run with verbose output
+go test ./tests/... -v
+```
+
+---
+
+## Code Coverage
+
+```bash
+# Coverage for all goose packages
+go test ./tests/... -coverpkg=./...
+
+```

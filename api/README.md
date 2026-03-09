@@ -103,3 +103,25 @@ curl http://localhost:8080/user
 # Get user by ID
 curl http://localhost:8080/user/1
 ```
+
+---
+
+## Running Tests
+
+```bash
+# Run all tests
+go test ./tests/...
+
+# Run with verbose output
+go test ./tests/... -v
+```
+
+---
+
+## Code Coverage
+
+```bash
+# Coverage for all goose packages
+go test ./tests/... -coverpkg=./...
+
+```

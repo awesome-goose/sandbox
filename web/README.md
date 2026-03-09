@@ -125,3 +125,25 @@ http://localhost:8080/          # Home page
 http://localhost:8080/user      # User list
 http://localhost:8080/user/1    # User detail
 ```
+
+---
+
+## Running Tests
+
+```bash
+# Run all tests
+go test ./tests/...
+
+# Run with verbose output
+go test ./tests/... -v
+```
+
+---
+
+## Code Coverage
+
+```bash
+# Coverage for all goose packages
+go test ./tests/... -coverpkg=./...
+
+```

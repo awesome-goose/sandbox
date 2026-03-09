@@ -97,3 +97,25 @@ go run main.go
 go run main.go user
 go run main.go user 1
 ```
+
+---
+
+## Running Tests
+
+```bash
+# Run all tests
+go test ./tests/...
+
+# Run with verbose output
+go test ./tests/... -v
+```
+
+---
+
+## Code Coverage
+
+```bash
+# Coverage for all goose packages
+go test ./tests/... -coverpkg=./...
+
+```
