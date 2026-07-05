@@ -49,13 +49,13 @@ hitting real endpoints.
 Backend routes are declared **without** the `/api` prefix — the SPA
 platform serves them under it:
 
-| Declared            | Served at              | Description             |
-| ------------------- | ---------------------- | ----------------------- |
-| `GET /`             | `GET /api`             | Health check            |
-| `GET /version`      | `GET /api/version`     | App name + version JSON |
-| `GET /users`        | `GET /api/users`       | List users (in-memory)  |
-| `GET /users/:id`    | `GET /api/users/:id`   | Get one user            |
-| `POST /users`       | `POST /api/users`      | Create a user           |
+| Declared         | Served at            | Description             |
+| ---------------- | -------------------- | ----------------------- |
+| `GET /`          | `GET /api`           | Health check            |
+| `GET /version`   | `GET /api/version`   | App name + version JSON |
+| `GET /users`     | `GET /api/users`     | List users (in-memory)  |
+| `GET /users/:id` | `GET /api/users/:id` | Get one user            |
+| `POST /users`    | `POST /api/users`    | Create a user           |
 
 Any non-`/api` path serves a file from `public/` if it exists, and falls
 back to `public/index.html` for client-side routes.
@@ -76,12 +76,3 @@ cd dist && ./spa-example
 ```bash
 go test ./tests/...
 ```
-
----
-
-## Note on the local `replace` directive
-
-`go.mod` contains `replace github.com/awesome-goose/goose => ../../goose`
-because the `platforms/spa` package is newer than the latest published
-goose release. Remove the directive once a goose version containing
-`platforms/spa` is tagged.
