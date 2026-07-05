@@ -19,6 +19,7 @@ Example applications demonstrating the Goose framework's capabilities across dif
 | [cli/](cli/)     | Command-line interface application       | -          |
 | [web/](web/)     | Web application with HTML templates      | 8080       |
 | [multi/](multi/) | Multi-platform app (API + Web + CLI)     | 8080, 3000 |
+| [spa/](spa/)     | Single-page app (JSON API + Angular)     | 8080       |
 
 ---
 
@@ -36,6 +37,9 @@ cd web && go run main.go
 
 # Run the Multi-platform example
 cd multi && go run main.go
+
+# Run the SPA example (builds the Angular frontend first)
+cd spa && make install && make run
 ```
 
 ---
